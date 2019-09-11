@@ -38,13 +38,6 @@ dataset
 *.out
 *.app
 
-### Code ###
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
 ### macOS ###
 # General
 .DS_Store
