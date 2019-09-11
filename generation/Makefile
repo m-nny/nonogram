@@ -2,7 +2,7 @@
 BOARD_SIZE			?=	2
 DROP_PROBABILITY	?=	0
 
-DATASET_DIR		=	dataset
+DATASET_DIR		=	../dataset
 RESULT_TABLE	=	$(DATASET_DIR)/$(BOARD_SIZE)__$(DROP_PROBABILITY).tsv
 BUILD_DIR		=	build
 APP				=	$(BUILD_DIR)/main.out
