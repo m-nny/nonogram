@@ -108,7 +108,11 @@ string encode_board(const Board &board) {
   return encoded;
 }
 
-void generate_all(Board &board, int dims, int i, int j) {
+void generate_all(Board &board, int dims, int i, int j, int prob) {
+  if (prob != 0 && (i & 1) && (rand() % 100 < prob)) {
+    return;
+  }
+
   if (j == dims) {
     i++;
     j = 0;
@@ -119,14 +123,14 @@ void generate_all(Board &board, int dims, int i, int j) {
     return;
   }
   board[i][j] = EMPTY;
-  generate_all(board, dims, i, j + 1);
+  generate_all(board, dims, i, j + 1, prob);
   board[i][j] = FILL;
-  generate_all(board, dims, i, j + 1);
+  generate_all(board, dims, i, j + 1, prob);
 }
 
-void generate_all(int dims) {
+void generate_all(int dims, int prob) {
   Board board(dims, vector<Cell>(dims, UNKNOWN));
-  generate_all(board, dims, 0, 0);
+  generate_all(board, dims, 0, 0, prob);
 }
 
 void __test() {
@@ -144,6 +148,7 @@ void __test() {
 
 int main() {
   int dims = 1;
-  cin >> dims;
-  generate_all(dims);
+  int prob = 0;
+  cin >> dims >> prob;
+  generate_all(dims, prob);
 }
